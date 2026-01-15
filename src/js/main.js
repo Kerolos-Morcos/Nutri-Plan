@@ -1,11 +1,15 @@
 import Loader from "./ui/loadingSpinner.js";
+import RenderCategories from "./ui/renderCategories.js";
 
-/**
- * NutriPlan - Main Entry Point
- *
- * This is the main entry point for the application.
- * Import your modules and initialize the app here.
- */
+class App {
+  constructor() {
+    Loader.loading();
+    this.appFunctions();
+  }
+  appFunctions() {
+    const categories = new RenderCategories();
+    categories.renderCategoriesFunction();
+  }
+}
 
-// Loading..
-Loader.loading();
+new App();
