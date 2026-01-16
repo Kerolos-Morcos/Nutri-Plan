@@ -2,7 +2,7 @@ import FetchAllMeals from "../api/fetchAllMeals.js";
 import SpinnerLoader from "./loader.js";
 
 class RenderAllMeals {
-  async renderAllMealsFunction(meals) {
+  async renderAllMealsFunction(meals, countText) {
     const loader = new SpinnerLoader();
     loader.show();
     if (!meals) {
@@ -11,7 +11,7 @@ class RenderAllMeals {
     const container = document.getElementById("recipes-grid");
     const recipesCount = document.getElementById("recipes-count");
     if (!meals || meals.length === 0) {
-      recipesCount.innerHTML = "Showing 0 recipes";
+      recipesCount.innerHTML = countText ? countText : "Showing 0 recipes";
       container.innerHTML = `
         <div class="flex flex-col items-center justify-center py-12 text-center">
           <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -24,7 +24,11 @@ class RenderAllMeals {
       loader.hide();
       return;
     }
-    recipesCount.innerHTML = `Showing ${meals.length} recipes`;
+    if (countText) {
+      recipesCount.innerHTML = countText;
+    } else {
+      recipesCount.innerHTML = `Showing ${meals.length} recipes`;
+    }
     container.innerHTML = meals
       .map((meal) => {
         return `
