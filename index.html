@@ -243,6 +243,14 @@
 
           <div id="recipes-grid" class="grid grid-cols-4 gap-5">
             <!-- Recipes will be loaded here by JavaScript -->
+            <div
+              class="flex items-center justify-center py-12 hidden"
+              id="loading-spinner"
+            >
+              <div
+                class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"
+              ></div>
+            </div>
           </div>
         </div>
       </section>
@@ -686,7 +694,10 @@
       </section>
 
       <!-- ============= PRODUCT SCANNER SECTION ============= -->
-      <section id="products-section" class="px-8 py-8 bg-gray-50 min-h-screen hidden">
+      <section
+        id="products-section"
+        class="px-8 py-8 bg-gray-50 min-h-screen hidden"
+      >
         <div class="max-w-7xl mx-auto">
           <!-- Search Header -->
           <div
@@ -930,7 +941,10 @@
       </section>
 
       <!-- ============= FOOD LOG SECTION ============= -->
-      <section id="foodlog-section" class="px-8 py-8 bg-gray-50 min-h-screen hidden">
+      <section
+        id="foodlog-section"
+        class="px-8 py-8 bg-gray-50 min-h-screen hidden"
+      >
         <div class="max-w-7xl mx-auto">
           <!-- Page Header -->
           <div

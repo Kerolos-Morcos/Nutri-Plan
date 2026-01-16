@@ -7,7 +7,20 @@ class RenderAllMeals {
     }
     const container = document.getElementById("recipes-grid");
     const recipesCount = document.getElementById("recipes-count");
-    recipesCount.innerHTML = `Showing ${(meals && meals.length) || 0} recipes`;
+    if (!meals || meals.length === 0) {
+      recipesCount.innerHTML = "Showing 0 recipes";
+      container.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-search text-gray-400 text-2xl"></i>
+          </div>
+          <p class="text-gray-500 text-lg">No recipes found</p>
+          <p class="text-gray-400 text-sm mt-2">Try searching for something else</p>
+        </div>
+      `;
+      return;
+    }
+    recipesCount.innerHTML = `Showing ${meals.length} recipes`;
     container.innerHTML = meals
       .map((meal) => {
         return `
