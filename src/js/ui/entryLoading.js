@@ -1,4 +1,4 @@
-class Loader {
+class EntryLoading {
   static loading() {
     const loader = document.getElementById("app-loading-overlay");
     if (!loader) return;
@@ -22,4 +22,4 @@ class Loader {
   }
 }
 
-export default Loader;
+export default EntryLoading;

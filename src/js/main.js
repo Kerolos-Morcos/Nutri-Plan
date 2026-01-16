@@ -1,11 +1,11 @@
-import Loader from "./ui/loadingSpinner.js";
 import RenderAllMeals from "./ui/renderAllMeals.js";
 import RenderCategories from "./ui/renderCategories.js";
 import RenderAreas from "./ui/renderAreas.js";
+import EntryLoading from "./ui/entryLoading.js";
 
 class App {
   constructor() {
-    Loader.loading();
+    EntryLoading.loading();
     this.appFunctions();
   }
   appFunctions() {
