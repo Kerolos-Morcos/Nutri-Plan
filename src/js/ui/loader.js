@@ -1,10 +1,15 @@
-// utils/loader.js
-export function showLoader() {
-  const loader = document.getElementById("loading-spinner");
-  if (loader) loader.classList.remove("hidden");
+class SpinnerLoader {
+  constructor(loaderId = "loading-spinner") {
+    this.loader = document.getElementById(loaderId);
+  }
+
+  show() {
+    if (this.loader) this.loader.classList.remove("hidden");
+  }
+
+  hide() {
+    if (this.loader) this.loader.classList.add("hidden");
+  }
 }
 
-export function hideLoader() {
-  const loader = document.getElementById("loading-spinner");
-  if (loader) loader.classList.add("hidden");
-}
+export default SpinnerLoader;

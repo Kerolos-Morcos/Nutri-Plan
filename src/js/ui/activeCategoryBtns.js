@@ -1,5 +1,5 @@
 import FetchMealsByCategories from "../api/fetchMealsByCategory.js";
-import { hideLoader, showLoader } from "./loader.js";
+import SpinnerLoader from "./loader.js";
 import RenderAllMeals from "./renderAllMeals.js";
 
 class ActiveCategoryBtns {
@@ -12,12 +12,13 @@ class ActiveCategoryBtns {
         const category = card.dataset.category;
         const mealsContainer = document.getElementById("recipes-grid");
         mealsContainer.innerHTML = "";
-        showLoader();
+        const loader = new SpinnerLoader();
+        loader.show();
         const meals = await FetchMealsByCategories.fetchMealsByCategoryFunction(
           category
         );
         await new RenderAllMeals().renderAllMealsFunction(meals);
-        hideLoader();
+        loader.hide();
       });
     });
   }

@@ -1,5 +1,5 @@
 import FetchMealsByArea from "../api/fetchMealsByArea.js";
-import { hideLoader, showLoader } from "./loader.js";
+import SpinnerLoader from "./loader.js";
 import RenderAllMeals from "./renderAllMeals.js";
 import RenderAreas from "./renderAreas.js";
 
@@ -27,10 +27,11 @@ class ActiveAreaBtns {
         const area = btn.dataset.area;
         const mealsContainer = document.getElementById("recipes-grid");
         mealsContainer.innerHTML = "";
-        showLoader();
+        const loader = new SpinnerLoader();
+        loader.show();
         const meals = await FetchMealsByArea.fetchMealsByAreaFunction(area);
         await new RenderAllMeals().renderAllMealsFunction(meals);
-        hideLoader();
+        loader.hide();
       });
     });
   }
