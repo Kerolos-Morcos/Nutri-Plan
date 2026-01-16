@@ -1,7 +1,9 @@
 import FetchAllMeals from "../api/fetchAllMeals.js";
+import { hideLoader, showLoader } from "./loader.js";
 
 class RenderAllMeals {
   async renderAllMealsFunction(meals) {
+    showLoader();
     if (!meals) {
       meals = await FetchAllMeals.fetchAllMealsFunction();
     }
@@ -18,6 +20,7 @@ class RenderAllMeals {
           <p class="text-gray-400 text-sm mt-2">Try searching for something else</p>
         </div>
       `;
+      hideLoader();
       return;
     }
     recipesCount.innerHTML = `Showing ${meals.length} recipes`;
@@ -72,6 +75,8 @@ class RenderAllMeals {
             `;
       })
       .join("");
+
+    hideLoader();
   }
 }
 
