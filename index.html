@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriPlan - Food, Nutrition & Fitness Planner</title>
-    <link rel="icon" href="./src/images/favicon.png">
+    <link rel="icon" href="./src/images/favicon.png" />
     <script>
       window.FontAwesomeConfig = { autoReplaceSvg: "nest" };
     </script>
@@ -182,16 +182,7 @@
           </div>
 
           <div class="flex items-center gap-3 overflow-x-auto pb-2">
-            <button
-              class="px-4 py-2 bg-emerald-600 text-white rounded-full font-medium text-sm whitespace-nowrap hover:bg-emerald-700 transition-all"
-            >
-              All Recipes
-            </button>
-            <button
-              class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium text-sm whitespace-nowrap hover:bg-gray-200 transition-all"
-            >
-              Egyptain
-            </button>
+            <!-- Meals Areas -->
           </div>
         </div>
       </section>
@@ -210,13 +201,13 @@
             <button
               class="text-emerald-600 font-medium text-sm hover:text-emerald-700 flex items-center gap-1"
             >
-              View All <i class="fa-solid fa-chevron-right text-xs"></i>
+              View All
+              <i class="fa-solid fa-chevron-right text-xs"></i>
             </button>
           </div>
 
           <div id="categories-grid" class="grid grid-cols-6 gap-3">
             <!-- Categories will be loaded here by JavaScript -->
-           
           </div>
         </div>
       </section>
@@ -327,16 +318,19 @@
                 <div class="flex items-center gap-3 mb-3">
                   <span
                     class="px-3 py-1 bg-emerald-500 text-white text-sm font-semibold rounded-full"
-                    >Chicken</span
                   >
+                    Chicken
+                  </span>
                   <span
                     class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full"
-                    >Japanese</span
                   >
+                    Japanese
+                  </span>
                   <span
                     class="px-3 py-1 bg-purple-500 text-white text-sm font-semibold rounded-full"
-                    >Casserole</span
                   >
+                    Casserole
+                  </span>
                 </div>
                 <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
                   Teriyaki Chicken Casserole
@@ -382,9 +376,9 @@
                 >
                   <i class="fa-solid fa-list-check text-emerald-600"></i>
                   Ingredients
-                  <span class="text-sm font-normal text-gray-500 ml-auto"
-                    >9 items</span
-                  >
+                  <span class="text-sm font-normal text-gray-500 ml-auto">
+                    9 items
+                  </span>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div
@@ -395,8 +389,8 @@
                       class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
                     />
                     <span class="text-gray-700">
-                      <span class="font-medium text-gray-900">3/4 cup</span> soy
-                      sauce
+                      <span class="font-medium text-gray-900">3/4 cup</span>
+                      soy sauce
                     </span>
                   </div>
                   <div
@@ -431,9 +425,9 @@
                       class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
                     />
                     <span class="text-gray-700">
-                      <span class="font-medium text-gray-900"
-                        >1/2 teaspoon</span
-                      >
+                      <span class="font-medium text-gray-900">
+                        1/2 teaspoon
+                      </span>
                       ground ginger
                     </span>
                   </div>
@@ -445,9 +439,9 @@
                       class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
                     />
                     <span class="text-gray-700">
-                      <span class="font-medium text-gray-900"
-                        >1/2 teaspoon</span
-                      >
+                      <span class="font-medium text-gray-900">
+                        1/2 teaspoon
+                      </span>
                       minced garlic
                     </span>
                   </div>
@@ -459,9 +453,9 @@
                       class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
                     />
                     <span class="text-gray-700">
-                      <span class="font-medium text-gray-900"
-                        >4 Tablespoons</span
-                      >
+                      <span class="font-medium text-gray-900">
+                        4 Tablespoons
+                      </span>
                       cornstarch
                     </span>
                   </div>
@@ -473,8 +467,8 @@
                       class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
                     />
                     <span class="text-gray-700">
-                      <span class="font-medium text-gray-900">2</span> chicken
-                      breasts
+                      <span class="font-medium text-gray-900">2</span>
+                      chicken breasts
                     </span>
                   </div>
                   <div
@@ -608,8 +602,7 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
-                  >
-                  </iframe>
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -794,16 +787,17 @@
                 id="lookup-barcode-btn"
                 class="px-6 py-3.5 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all"
               >
-                <i class="fa-solid fa-search mr-2"></i>Lookup
+                <i class="fa-solid fa-search mr-2"></i>
+                Lookup
               </button>
             </div>
           </div>
 
           <!-- Nutrition Grade Filter -->
           <div class="flex items-center gap-4 mb-6">
-            <span class="text-sm font-medium text-gray-700"
-              >Filter by Nutri-Score:</span
-            >
+            <span class="text-sm font-medium text-gray-700">
+              Filter by Nutri-Score:
+            </span>
             <div class="flex gap-2">
               <button
                 class="nutri-score-filter px-4 py-2 rounded-lg text-sm font-bold transition-all bg-emerald-600 text-white"
@@ -856,27 +850,32 @@
               <button
                 class="product-category-btn px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-emerald-200 transition-all"
               >
-                <i class="fa-solid fa-cookie mr-1.5"></i>Snacks
+                <i class="fa-solid fa-cookie mr-1.5"></i>
+                Snacks
               </button>
               <button
                 class="product-category-btn px-4 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-blue-200 transition-all"
               >
-                <i class="fa-solid fa-glass-water mr-1.5"></i>Beverages
+                <i class="fa-solid fa-glass-water mr-1.5"></i>
+                Beverages
               </button>
               <button
                 class="product-category-btn px-4 py-2 bg-amber-100 text-amber-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-amber-200 transition-all"
               >
-                <i class="fa-solid fa-bread-slice mr-1.5"></i>Breakfast
+                <i class="fa-solid fa-bread-slice mr-1.5"></i>
+                Breakfast
               </button>
               <button
                 class="product-category-btn px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-purple-200 transition-all"
               >
-                <i class="fa-solid fa-ice-cream mr-1.5"></i>Desserts
+                <i class="fa-solid fa-ice-cream mr-1.5"></i>
+                Desserts
               </button>
               <button
                 class="product-category-btn px-4 py-2 bg-rose-100 text-rose-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-rose-200 transition-all"
               >
-                <i class="fa-solid fa-cheese mr-1.5"></i>Dairy
+                <i class="fa-solid fa-cheese mr-1.5"></i>
+                Dairy
               </button>
             </div>
           </div>
@@ -939,12 +938,14 @@
                   <div
                     class="flex items-center gap-3 text-xs text-gray-500 mb-3"
                   >
-                    <span
-                      ><i class="fa-solid fa-weight-scale mr-1"></i>250g</span
-                    >
-                    <span
-                      ><i class="fa-solid fa-fire mr-1"></i>350 kcal/100g</span
-                    >
+                    <span>
+                      <i class="fa-solid fa-weight-scale mr-1"></i>
+                      250g
+                    </span>
+                    <span>
+                      <i class="fa-solid fa-fire mr-1"></i>
+                      350 kcal/100g
+                    </span>
                   </div>
 
                   <!-- Mini Nutrition -->
@@ -1016,9 +1017,9 @@
               <!-- Calories Progress -->
               <div class="bg-emerald-50 rounded-xl p-4">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700"
-                    >Calories</span
-                  >
+                  <span class="text-sm font-semibold text-gray-700">
+                    Calories
+                  </span>
                   <span class="text-sm text-gray-500">0 / 2000 kcal</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -1031,9 +1032,9 @@
               <!-- Protein Progress -->
               <div class="bg-blue-50 rounded-xl p-4">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700"
-                    >Protein</span
-                  >
+                  <span class="text-sm font-semibold text-gray-700">
+                    Protein
+                  </span>
                   <span class="text-sm text-gray-500">0 / 50 g</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -1082,7 +1083,8 @@
                   class="text-red-500 hover:text-red-600 text-sm font-medium"
                   style="display: none"
                 >
-                  <i class="fa-solid fa-trash mr-1"></i>Clear All
+                  <i class="fa-solid fa-trash mr-1"></i>
+                  Clear All
                 </button>
               </div>
 

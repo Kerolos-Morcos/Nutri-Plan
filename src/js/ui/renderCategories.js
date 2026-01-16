@@ -1,4 +1,4 @@
-import fetchMealCategories from "../api/fetchCategories.js";
+import FetchMealCategories from "../api/fetchCategories.js";
 
 const Category_UI = {
   Beef: {
@@ -70,10 +70,11 @@ const Category_UI = {
 
 class RenderCategories {
   async renderCategoriesFunction() {
-    const categories = await fetchMealCategories.getCategories();
+    const categories = await FetchMealCategories.getCategories();
     const container = document.getElementById("categories-grid");
 
     container.innerHTML = categories
+      .slice(0, 12)
       .map((cat) => {
         const catStyle = Category_UI[cat.name] || Category_UI["Starter"];
         return `

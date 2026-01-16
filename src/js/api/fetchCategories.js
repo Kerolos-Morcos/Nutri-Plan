@@ -1,4 +1,4 @@
-class fetchMealCategories {
+class FetchMealCategories {
   static async getCategories() {
     const response = await fetch(
       "https://nutriplan-api.vercel.app/api/meals/categories"
@@ -8,4 +8,4 @@ class fetchMealCategories {
   }
 }
 
-export default fetchMealCategories;
+export default FetchMealCategories;
