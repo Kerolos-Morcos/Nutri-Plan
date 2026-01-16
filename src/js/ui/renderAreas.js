@@ -1,11 +1,11 @@
 import FetchAreas from "../api/fetchAreas.js";
 import ActiveAreaBtns from "./activeAreaBtns.js";
 
-class RenderMealsAreas {
+class RenderAreas {
   container = document.querySelector(
     "#search-filters-section .flex.items-center"
   );
-  async renderMealsAreasFunction() {
+  async renderAreasFunction() {
     const areas = await FetchAreas.fetchAreasFunction();
 
     let allMeals = `
@@ -38,4 +38,4 @@ class RenderMealsAreas {
   }
 }
 
-export default RenderMealsAreas;
+export default RenderAreas;

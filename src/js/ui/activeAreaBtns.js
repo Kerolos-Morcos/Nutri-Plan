@@ -1,11 +1,11 @@
 import FetchMealsByArea from "../api/fetchMealsByArea.js";
 import { hideLoader, showLoader } from "./loader.js";
 import RenderAllMeals from "./renderAllMeals.js";
-import RenderMealsAreas from "./renderMealsAreas.js";
+import RenderAreas from "./renderAreas.js";
 
 class ActiveAreaBtns {
   static activeBtnsFunction() {
-    const container = new RenderMealsAreas().container;
+    const container = new RenderAreas().container;
     const buttons = container.querySelectorAll("button");
     buttons.forEach((btn) => {
       btn.addEventListener("click", async () => {

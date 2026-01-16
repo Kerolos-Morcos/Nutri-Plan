@@ -1,7 +1,7 @@
 import Loader from "./ui/loadingSpinner.js";
 import RenderAllMeals from "./ui/renderAllMeals.js";
 import RenderCategories from "./ui/renderCategories.js";
-import RenderMealsAreas from "./ui/renderMealsAreas.js";
+import RenderAreas from "./ui/renderAreas.js";
 
 class App {
   constructor() {
@@ -14,8 +14,8 @@ class App {
     categories.renderCategoriesFunction();
 
     // Fetch Meals Areas
-    const areas = new RenderMealsAreas();
-    areas.renderMealsAreasFunction();
+    const areas = new RenderAreas();
+    areas.renderAreasFunction();
 
     // Fetch All Meals
     const meals = new RenderAllMeals();

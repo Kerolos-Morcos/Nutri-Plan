@@ -1,4 +1,5 @@
 import FetchMealCategories from "../api/fetchCategories.js";
+import ActiveCategoryBtns from "./activeCategoryBtns.js";
 
 const Category_UI = {
   Beef: {
@@ -96,6 +97,9 @@ class RenderCategories {
         `;
       })
       .join("");
+
+    // Active Btns
+    ActiveCategoryBtns.activeCategoryBtnsFunction();
   }
 }
 
