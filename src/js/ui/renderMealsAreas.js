@@ -1,4 +1,4 @@
-import FetchMealsAreas from "../api/fetchMealsAreas.js";
+import FetchAreas from "../api/fetchAreas.js";
 import ActiveAreaBtns from "./activeAreaBtns.js";
 
 class RenderMealsAreas {
@@ -6,7 +6,7 @@ class RenderMealsAreas {
     "#search-filters-section .flex.items-center"
   );
   async renderMealsAreasFunction() {
-    const areas = await FetchMealsAreas.fetchMealsAreas();
+    const areas = await FetchAreas.fetchAreasFunction();
 
     let allMeals = `
       <button

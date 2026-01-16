@@ -70,7 +70,7 @@ const Category_UI = {
 
 class RenderCategories {
   async renderCategoriesFunction() {
-    const categories = await FetchMealCategories.getCategories();
+    const categories = await FetchMealCategories.fetchMealCategoriesFunction();
     const container = document.getElementById("categories-grid");
 
     container.innerHTML = categories

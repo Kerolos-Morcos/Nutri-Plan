@@ -1,11 +1,13 @@
 import FetchAllMeals from "../api/fetchAllMeals.js";
 
 class RenderAllMeals {
-  async renderAllMealsFunction() {
-    const meals = await FetchAllMeals.fetchAllMealsFunction();
+  async renderAllMealsFunction(meals) {
+    if (!meals) {
+      meals = await FetchAllMeals.fetchAllMealsFunction();
+    }
     const container = document.getElementById("recipes-grid");
     const recipesCount = document.getElementById("recipes-count");
-    recipesCount.innerHTML = `Showing ${meals.length} recipes`;
+    recipesCount.innerHTML = `Showing ${(meals && meals.length) || 0} recipes`;
     container.innerHTML = meals
       .map((meal) => {
         return `

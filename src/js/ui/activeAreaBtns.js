@@ -1,3 +1,5 @@
+import FetchMealsByArea from "../api/fetchMealsByArea.js";
+import RenderAllMeals from "./renderAllMeals.js";
 import RenderMealsAreas from "./renderMealsAreas.js";
 
 class ActiveAreaBtns {
@@ -5,7 +7,7 @@ class ActiveAreaBtns {
     const container = new RenderMealsAreas().container;
     const buttons = container.querySelectorAll("button");
     buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", async () => {
         buttons.forEach((b) => {
           b.classList.remove(
             "bg-emerald-600",
@@ -20,6 +22,10 @@ class ActiveAreaBtns {
           "text-white",
           "hover:bg-emerald-700"
         );
+        // Filter by area
+        const area = btn.dataset.area;
+        const meals = await FetchMealsByArea.fetchMealsByAreaFunction(area);
+        new RenderAllMeals().renderAllMealsFunction(meals);
       });
     });
   }
