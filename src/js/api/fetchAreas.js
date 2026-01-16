@@ -2,7 +2,8 @@ class FetchAreas {
   static async fetchAreasFunction(retries = 2) {
     try {
       const response = await fetch(
-        "https://nutriplan-api.vercel.app/api/meals/areas"
+        "https://nutriplan-api.vercel.app/api/meals/areas",
+        { cache: "no-store" }
       );
 
       if (!response.ok)
