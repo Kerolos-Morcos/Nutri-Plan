@@ -7,6 +7,7 @@ import NavigationUI from "./ui/sidebarNavigation.js";
 import ProductSearchUI from "./ui/productSearchUI.js";
 import NutriScoreFilter from "./ui/nutriScoreFilter.js";
 import CategoryFilter from "./ui/categoryFilter.js";
+import ViewToggle from "./ui/viewToggle.js";
 
 class App {
   constructor() {
@@ -16,6 +17,9 @@ class App {
   async appFunctions() {
     // Navigation
     new NavigationUI();
+
+    // Change View
+    ViewToggle.changeView();
 
     // Fetch Meals Categories
     const categories = new RenderCategories();
