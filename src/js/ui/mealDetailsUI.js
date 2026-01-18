@@ -1,3 +1,4 @@
+import LogMealModal from "./logMealModal.js";
 import NutritionUI from "./nutritionUI.js";
 
 class FetchMealDetailsUI {
@@ -9,6 +10,7 @@ class FetchMealDetailsUI {
     // Meal Details
     const mealDetails = document.getElementById("meal-details");
     const backBtn = document.getElementById("back-to-meals-btn");
+    const logMealBtn = document.getElementById("log-meal-btn");
 
     // ================= Header =================
     header.querySelector("h1").textContent = "Meal recipes";
@@ -30,7 +32,6 @@ class FetchMealDetailsUI {
     if (heroServings) {
       heroServings.textContent = "4 servings";
     }
-
     // ================= Badges =================
     const badgesContainer = mealDetails.querySelector(
       ".absolute.bottom-0 .flex"
@@ -119,7 +120,13 @@ class FetchMealDetailsUI {
 
     // ================= Nutrition =================
     const nutritionUI = new NutritionUI();
-    await nutritionUI.fetchNutrition(meal);
+    const nutrition = await nutritionUI.fetchNutrition(meal);
+    // ================= Modal =================
+    const logMealModal = new LogMealModal();
+
+    logMealBtn.addEventListener("click", () => {
+      logMealModal.show(meal, nutrition);
+    });
 
     // Back Button
     backBtn.addEventListener("click", backToMeals);

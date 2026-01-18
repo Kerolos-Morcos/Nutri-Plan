@@ -6,6 +6,7 @@ class NutritionUI {
     this.nutritionContainer = document.getElementById(
       "nutrition-facts-container"
     );
+    this.logMealBtn = document.getElementById("log-meal-btn");
   }
 
   async fetchNutrition(meal) {
@@ -37,6 +38,21 @@ class NutritionUI {
       </div>
     `;
 
+    this.logMealBtn.classList.remove("hover:bg-blue-700", "cursor-pointer");
+    this.logMealBtn.classList.add(
+      "bg-gray-300",
+      "hover:bg-gray-300",
+      "text-gray-500",
+      "cursor-not-allowed",
+      "transition-all"
+    );
+    this.logMealBtn.setAttribute("disabled", true);
+
+    this.logMealBtn.innerHTML = `
+        <i class="fa fa-spinner fa-spin"></i>
+        <span>Calculating...</span>                  
+    `;
+
     const nutrition = await FetchNutrition.getNutrition(meal);
     console.log("Nutrition data received:", nutrition);
 
@@ -47,6 +63,8 @@ class NutritionUI {
     }
 
     this.renderNutrition(nutrition, meal);
+
+    return nutrition;
   }
 
   renderNutrition(nutrition) {
@@ -95,6 +113,20 @@ class NutritionUI {
     );
 
     // Hero calories
+    this.logMealBtn.classList.add("hover:bg-blue-700", "cursor-pointer");
+    this.logMealBtn.classList.remove(
+      "bg-gray-300",
+      "hover:bg-gray-300",
+      "text-gray-500",
+      "cursor-not-allowed",
+      "transition-all"
+    );
+    this.logMealBtn.removeAttribute("disabled");
+    this.logMealBtn.innerHTML = `
+        <i class="fa-solid fa-clipboard-list"></i>
+        <span>Log This Meal</span>
+    `;
+
     this.heroCalories.textContent = `${calories} cal / serving`;
 
     this.nutritionContainer.innerHTML = `
