@@ -1,5 +1,7 @@
 import FetchAllMeals from "../api/fetchAllMeals.js";
+import FetchMealDetails from "../api/fetchMealDetails.js";
 import SpinnerLoader from "./loader.js";
+import FetchMealDetailsUI from "./mealDetailsUI.js";
 
 class RenderAllMeals {
   async renderAllMealsFunction(meals, countText) {
@@ -80,6 +82,15 @@ class RenderAllMeals {
             `;
       })
       .join("");
+    const mealUI = new FetchMealDetailsUI();
+
+    document.querySelectorAll(".recipe-card").forEach((card) => {
+      card.addEventListener("click", async () => {
+        const id = card.dataset.mealId;
+        const meal = await FetchMealDetails.getMealById(id);
+        mealUI.fetchMealDetailsUIFunction(meal);
+      });
+    });
 
     loader.hide();
   }

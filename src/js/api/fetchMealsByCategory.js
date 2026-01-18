@@ -9,10 +9,7 @@ class FetchMealsByCategories {
       const data = await response.json();
       return data.results || [];
     } catch (err) {
-      console.error(
-        `FetchMealsByCategory failed for category: ${category}`,
-        err
-      );
+      console.error(`Fetch failed for category: ${category}`, err);
       return [];
     }
   }

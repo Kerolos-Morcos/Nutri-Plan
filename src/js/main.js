@@ -3,13 +3,20 @@ import RenderCategories from "./ui/renderCategories.js";
 import RenderAreas from "./ui/renderAreas.js";
 import EntryLoading from "./ui/entryLoading.js";
 import SearchUI from "./ui/searchUI.js";
+import NavigationUI from "./ui/sidebarNavigation.js";
+import ProductSearchUI from "./ui/productSearchUI.js";
+import NutriScoreFilter from "./ui/nutriScoreFilter.js";
+import CategoryFilter from "./ui/categoryFilter.js";
 
 class App {
   constructor() {
     EntryLoading.loading();
     this.appFunctions();
   }
-  appFunctions() {
+  async appFunctions() {
+    // Navigation
+    new NavigationUI();
+
     // Fetch Meals Categories
     const categories = new RenderCategories();
     categories.renderCategoriesFunction();
@@ -25,6 +32,17 @@ class App {
     // Search Meals
     const searchFeature = new SearchUI();
     searchFeature.search();
+
+    const productSearch = new ProductSearchUI();
+    productSearch.attachEventListeners();
+
+    // Initialize Nutri-Score Filter
+    const nutriScoreFilter = new NutriScoreFilter();
+    nutriScoreFilter.clickedFilterBtn();
+
+    // Initialize Category Filter
+    const categoryFilter = new CategoryFilter();
+    await categoryFilter.initializeCategories();
   }
 }
 
