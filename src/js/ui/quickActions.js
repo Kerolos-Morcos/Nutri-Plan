@@ -5,10 +5,10 @@ class QuickActionsUI {
       ".quick-log-btn:nth-of-type(2)"
     );
 
-    this.attachEvents();
+    this.clickBtnAction();
   }
 
-  attachEvents() {
+  clickBtnAction() {
     if (this.logMealBtn) {
       this.logMealBtn.addEventListener("click", () => {
         window.location.hash = "#meals";
