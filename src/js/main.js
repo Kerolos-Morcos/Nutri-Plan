@@ -8,6 +8,7 @@ import ProductSearchUI from "./ui/productSearchUI.js";
 import NutriScoreFilter from "./ui/nutriScoreFilter.js";
 import CategoryFilter from "./ui/categoryFilter.js";
 import ViewToggle from "./ui/viewToggle.js";
+import FoodLogUI from "./ui/foodLogUI.js";
 
 class App {
   constructor() {
@@ -47,6 +48,9 @@ class App {
     // Initialize Category Filter
     const categoryFilter = new CategoryFilter();
     await categoryFilter.initializeCategories();
+
+    // FoodLog Page
+     new FoodLogUI();
   }
 }
 

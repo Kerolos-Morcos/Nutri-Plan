@@ -1,3 +1,4 @@
+import FoodLogUI from "./foodLogUI.js";
 import LogMealModal from "./logMealModal.js";
 import NutritionUI from "./nutritionUI.js";
 
@@ -122,6 +123,7 @@ class FetchMealDetailsUI {
     const nutritionUI = new NutritionUI();
     const nutrition = await nutritionUI.fetchNutrition(meal);
     // ================= Modal =================
+
     const logMealModal = new LogMealModal();
 
     logMealBtn.addEventListener("click", () => {

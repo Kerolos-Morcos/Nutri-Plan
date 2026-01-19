@@ -1,5 +1,6 @@
 class LogMealModal {
   constructor() {
+
     this.modal = document.getElementById("log-meal-modal");
     this.cancelBtn = document.getElementById("cancel-log-meal");
 
@@ -18,20 +19,24 @@ class LogMealModal {
     this.cancelBtn.addEventListener("click", () => this.hide());
 
     this.logBtn = document.getElementById("confirm-log-meal");
-    this.logBtn.addEventListener("click", () => this.logMeal());
+    if (this.logBtn) {
+      this.handleLogMeal = this.logMeal.bind(this);
+      this.logBtn.addEventListener("click", this.handleLogMeal);
+    }
 
-    this.increment();
-    this.decrement();
+    this.increase?.addEventListener("click", () => this.increment());
+    this.decrease?.addEventListener("click", () => this.decrement());
   }
 
   show(meal, nutrition) {
-    console.log("Nutri Data", nutrition);
     this.meal = meal;
     this.nutrition = nutrition;
+
+    this.inputValue.value = 1;
+
     // fill data
     this.image.src = meal.thumbnail;
     this.subtitle.textContent = meal.name;
-
     this.calories.textContent = nutrition.breakdown.perServing.calories ?? 0;
     this.protein.textContent = `${
       nutrition.breakdown.perServing.protein ?? 0
@@ -44,43 +49,37 @@ class LogMealModal {
 
   hide() {
     this.modal.classList.add("hidden");
+    this.inputValue.value = 1;
   }
 
-  // Increment Plus Button
+  //   Increment and Decrement
   increment() {
-    this.increase.addEventListener("click", () => {
-      this.valueNumber += 0.5;
-      this.inputValue.value = this.valueNumber;
-      if (this.valueNumber > 10) {
-        this.valueNumber = 10;
-        this.inputValue.value = this.valueNumber;
-      }
-    });
+    let current = parseFloat(this.inputValue.value) || 1;
+    current = Math.min(current + 0.5, 10);
+    this.inputValue.value = current.toFixed(1);
   }
 
-  //   Decrement Minus Button
   decrement() {
-    this.decrease.addEventListener("click", () => {
-      this.valueNumber = this.valueNumber - 0.5;
-      this.inputValue.value = this.valueNumber;
-      if (this.valueNumber < 0.5) {
-        this.valueNumber = 0.5;
-        this.inputValue.value = this.valueNumber;
-      }
-    });
+    let current = parseFloat(this.inputValue.value) || 1;
+    current = Math.max(current - 0.5, 0.5);
+    this.inputValue.value = current.toFixed(1);
   }
 
   //   Log Meal Button to LocalStorage
   logMeal() {
+    console.log("LOG MEAL CLICK");
     const servings = Number(this.inputValue.value);
     const per = this.nutrition.breakdown.perServing;
+    const today = new Date().toISOString().split("T")[0];
+
     const calories = per.calories * servings;
     const protein = per.protein * servings;
     const carbs = per.carbs * servings;
     const fat = per.fat * servings;
-    const today = new Date().toISOString().split("T")[0];
+
     const storage =
       JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
+
     if (!storage[today]) {
       storage[today] = {
         totalCalories: 0,
@@ -90,11 +89,13 @@ class LogMealModal {
         meals: [],
       };
     }
-    storage[today].meals.push({
+
+    const meals = storage[today].meals;
+
+    meals.push({
       type: "meal",
       mealId: this.meal.id,
       name: this.meal.name,
-      category: this.meal.category,
       thumbnail: this.meal.thumbnail,
       servings,
       nutrition: {
@@ -113,7 +114,21 @@ class LogMealModal {
 
     localStorage.setItem("nutriplan_daily_log", JSON.stringify(storage));
 
-    // Success Message
+    console.log("Storage after logging:", storage[today]);
+
+    if (window.foodLogUIInstance) {
+      window.foodLogUIInstance.todayNutrition();
+    }
+
+    window.dispatchEvent(
+      new CustomEvent("mealLogged", {
+        detail: {
+          meal: this.meal,
+          date: today,
+        },
+      })
+    );
+
     Swal.fire({
       icon: "success",
       title: "Meal Logged!",
@@ -127,7 +142,6 @@ class LogMealModal {
       +${Math.round(calories)} calories
     </p>
   `,
-      confirm: true,
       confirmButtonText: "Ok",
       confirmButtonColor: "#16a34a",
     });

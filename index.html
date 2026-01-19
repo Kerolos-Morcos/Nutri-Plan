@@ -877,14 +877,10 @@
       >
         <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
           <div class="flex items-center gap-4 mb-6">
-            <img
-              src="https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg"
-              alt="Chicken Handi"
-              class="w-16 h-16 rounded-xl object-cover"
-            />
+            <img src="" alt="" class="w-16 h-16 rounded-xl object-cover" />
             <div>
               <h3 class="text-xl font-bold text-gray-900">Log This Meal</h3>
-              <p class="text-gray-500 text-sm">Chicken Handi</p>
+              <p class="text-gray-500 text-sm"></p>
             </div>
           </div>
           <div class="mb-6">
@@ -924,27 +920,25 @@
                 <p
                   class="text-lg font-bold text-emerald-600"
                   id="modal-calories"
-                >
-                  400
-                </p>
+                ></p>
                 <p class="text-xs text-gray-500">Calories</p>
               </div>
               <div>
-                <p class="text-lg font-bold text-blue-600" id="modal-protein">
-                  0g
-                </p>
+                <p
+                  class="text-lg font-bold text-blue-600"
+                  id="modal-protein"
+                ></p>
                 <p class="text-xs text-gray-500">Protein</p>
               </div>
               <div>
-                <p class="text-lg font-bold text-amber-600" id="modal-carbs">
-                  0g
-                </p>
+                <p
+                  class="text-lg font-bold text-amber-600"
+                  id="modal-carbs"
+                ></p>
                 <p class="text-xs text-gray-500">Carbs</p>
               </div>
               <div>
-                <p class="text-lg font-bold text-purple-600" id="modal-fat">
-                  0g
-                </p>
+                <p class="text-lg font-bold text-purple-600" id="modal-fat"></p>
                 <p class="text-xs text-gray-500">Fat</p>
               </div>
             </div>
@@ -988,6 +982,7 @@
                   Track and monitor your daily nutrition intake
                 </p>
               </div>
+              <!-- Today's Date (JS) -->
               <div class="text-right">
                 <p class="text-sm opacity-80">Today</p>
                 <p class="text-xl font-bold" id="foodlog-date">
@@ -1001,104 +996,7 @@
           <div
             id="foodlog-today-section"
             class="bg-white rounded-2xl p-6 mb-6 border-2 border-gray-200"
-          >
-            <h3 class="text-lg font-bold text-gray-900 mb-4">
-              <i class="fa-solid fa-fire text-orange-500 mr-2"></i>
-              Today's Nutrition
-            </h3>
-
-            <!-- Progress Bars -->
-            <div
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"
-            >
-              <!-- Calories Progress -->
-              <div class="bg-emerald-50 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700">
-                    Calories
-                  </span>
-                  <span class="text-sm text-gray-500">0 / 2000 kcal</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div
-                    class="bg-emerald-500 h-2.5 rounded-full"
-                    style="width: 0%"
-                  ></div>
-                </div>
-              </div>
-              <!-- Protein Progress -->
-              <div class="bg-blue-50 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700">
-                    Protein
-                  </span>
-                  <span class="text-sm text-gray-500">0 / 50 g</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div
-                    class="bg-blue-500 h-2.5 rounded-full"
-                    style="width: 0%"
-                  ></div>
-                </div>
-              </div>
-              <!-- Carbs Progress -->
-              <div class="bg-amber-50 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700">Carbs</span>
-                  <span class="text-sm text-gray-500">0 / 250 g</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div
-                    class="bg-amber-500 h-2.5 rounded-full"
-                    style="width: 0%"
-                  ></div>
-                </div>
-              </div>
-              <!-- Fat Progress -->
-              <div class="bg-purple-50 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold text-gray-700">Fat</span>
-                  <span class="text-sm text-gray-500">0 / 65 g</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div
-                    class="bg-purple-500 h-2.5 rounded-full"
-                    style="width: 0%"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Logged Items -->
-            <div class="border-t border-gray-200 pt-4">
-              <div class="flex items-center justify-between mb-3">
-                <h4 class="text-sm font-semibold text-gray-700">
-                  Logged Items (0)
-                </h4>
-                <button
-                  id="clear-foodlog"
-                  class="text-red-500 hover:text-red-600 text-sm font-medium"
-                  style="display: none"
-                >
-                  <i class="fa-solid fa-trash mr-1"></i>
-                  Clear All
-                </button>
-              </div>
-
-              <div id="logged-items-list" class="space-y-2">
-                <!-- Empty State -->
-                <div class="text-center py-8 text-gray-500">
-                  <i
-                    class="fa-solid fa-utensils text-4xl mb-3 text-gray-300"
-                  ></i>
-                  <p class="font-medium">No meals logged today</p>
-                  <p class="text-sm">
-                    Add meals from the Meals page or scan products
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          ></div>
 
           <!-- Weekly Overview -->
           <div class="bg-white rounded-2xl p-6 mb-6 border-2 border-gray-200">
