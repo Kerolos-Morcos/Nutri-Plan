@@ -869,6 +869,211 @@
         </div>
       </section>
 
+      <!-- Product Scanner Modal -->
+      <div
+        id="product-modal"
+        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50"
+      >
+        <div
+          class="bg-white rounded-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+        >
+          <div class="p-6">
+            <!-- Header -->
+            <div class="flex items-start gap-6 mb-6">
+              <!-- Image -->
+              <div
+                class="w-32 h-32 bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0"
+              >
+                <img
+                  id="modal-product-image"
+                  src=""
+                  alt="Product Image"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+
+              <!-- Basic Info -->
+              <div class="flex-1">
+                <p
+                  id="modal-product-brand"
+                  class="text-sm text-emerald-600 font-semibold mb-1"
+                ></p>
+
+                <h2
+                  id="modal-product-name"
+                  class="text-2xl font-bold text-gray-900 mb-2"
+                ></h2>
+
+                <p
+                  id="modal-product-quantity"
+                  class="text-sm text-gray-500 mb-3"
+                ></p>
+
+                <!-- Scores -->
+                <div class="flex items-center gap-3">
+                  <div id="modal-nutriscore"></div>
+                  <div id="modal-nova"></div>
+                </div>
+              </div>
+
+              <!-- Close Button -->
+              <button
+                id="modal-close-btn"
+                class="text-gray-400 hover:text-gray-600"
+              >
+                ✖
+              </button>
+            </div>
+
+            <!-- Nutrition Facts -->
+            <div
+              class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-5 mb-6 border border-emerald-200"
+            >
+              <h3 class="font-bold text-gray-900 mb-4">
+                Nutrition Facts
+                <span class="text-sm font-normal text-gray-500">
+                  (per 100g)
+                </span>
+              </h3>
+
+              <!-- Calories -->
+              <div class="text-center mb-4 pb-4 border-b border-emerald-200">
+                <p
+                  id="modal-calories"
+                  class="text-4xl font-bold text-gray-900"
+                ></p>
+                <p class="text-sm text-gray-500">Calories</p>
+              </div>
+
+              <!-- Macros -->
+              <div class="grid grid-cols-4 gap-4">
+                <div class="text-center">
+                  <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                    <div
+                      id="modal-protein-bar"
+                      class="bg-emerald-500 h-2 rounded-full"
+                    ></div>
+                  </div>
+                  <p
+                    id="modal-protein"
+                    class="text-lg font-bold text-emerald-600"
+                  ></p>
+                  <p class="text-xs text-gray-500">Protein</p>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                    <div
+                      id="modal-carbs-bar"
+                      class="bg-blue-500 h-2 rounded-full"
+                    ></div>
+                  </div>
+                  <p
+                    id="modal-carbs"
+                    class="text-lg font-bold text-blue-600"
+                  ></p>
+                  <p class="text-xs text-gray-500">Carbs</p>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                    <div
+                      id="modal-fat-bar"
+                      class="bg-purple-500 h-2 rounded-full"
+                    ></div>
+                  </div>
+                  <p
+                    id="modal-fat"
+                    class="text-lg font-bold text-purple-600"
+                  ></p>
+                  <p class="text-xs text-gray-500">Fat</p>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                    <div
+                      id="modal-sugar-bar"
+                      class="bg-orange-500 h-2 rounded-full"
+                    ></div>
+                  </div>
+                  <p
+                    id="modal-sugar"
+                    class="text-lg font-bold text-orange-600"
+                  ></p>
+                  <p class="text-xs text-gray-500">Sugar</p>
+                </div>
+              </div>
+
+              <!-- Extra Nutrients -->
+              <div
+                class="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-emerald-200"
+              >
+                <div class="text-center">
+                  <p
+                    id="modal-saturated-fat"
+                    class="text-sm font-semibold text-gray-900"
+                  ></p>
+                  <p class="text-xs text-gray-500">Saturated Fat</p>
+                </div>
+
+                <div class="text-center">
+                  <p
+                    id="modal-fiber"
+                    class="text-sm font-semibold text-gray-900"
+                  ></p>
+                  <p class="text-xs text-gray-500">Fiber</p>
+                </div>
+
+                <div class="text-center">
+                  <p
+                    id="modal-salt"
+                    class="text-sm font-semibold text-gray-900"
+                  ></p>
+                  <p class="text-xs text-gray-500">Salt</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ingredients -->
+            <div id="modal-ingredients-container" class="hidden">
+              <div class="bg-gray-50 rounded-xl p-5 mb-6">
+                <h3 class="font-bold text-gray-900 mb-3">Ingredients</h3>
+                <p
+                  id="modal-ingredients"
+                  class="text-sm text-gray-600 leading-relaxed"
+                ></p>
+              </div>
+            </div>
+
+            <!-- Allergens -->
+            <div id="modal-allergens-container" class="hidden">
+              <div class="bg-red-50 rounded-xl p-5 mb-6 border border-red-200">
+                <h3 class="font-bold text-red-700 mb-2">Allergens</h3>
+                <p id="modal-allergens" class="text-sm text-red-600"></p>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-3">
+              <button
+                id="modal-add-to-log"
+                class="flex-1 py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all"
+              >
+                Log This Food
+              </button>
+
+              <button
+                id="modal-close-btn-bottom"
+                class="flex-1 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product Scanner Modal -->
+
       <!-- ============= FOOD LOG SECTION ============= -->
       <!-- Modal For Food Log Button -->
       <div

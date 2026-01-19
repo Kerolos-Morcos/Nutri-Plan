@@ -1,4 +1,5 @@
 import SpinnerLoader from "./loader.js";
+import ProductModal from "./productModal.js";
 
 class RenderProducts {
   constructor(loaderId = "products-loader") {
@@ -6,6 +7,8 @@ class RenderProducts {
     this.countElement = document.getElementById("products-count");
     this.emptyContainer = document.getElementById("products-empty");
     this.loader = new SpinnerLoader(loaderId);
+    // modal
+    this.modal = new ProductModal();
   }
 
   renderProductsFunction({
@@ -16,6 +19,8 @@ class RenderProducts {
     this.container.innerHTML = products
       .map((product) => this.createProductCard(product))
       .join("");
+    // modal
+    this.addCardClickListeners();
     this.container.style.display = "grid";
     if (pagination && pagination.total) {
       this.countElement.textContent = `Found ${pagination.total} product in ${category}`;
@@ -97,6 +102,15 @@ class RenderProducts {
         </div>
       </div>
     `;
+  }
+
+  addCardClickListeners() {
+    this.container.addEventListener("click", (e) => {
+      const card = e.target.closest(".product-card");
+      if (!card) return;
+      const barcode = card.dataset.barcode;
+      this.modal.open(barcode);
+    });
   }
 }
 
