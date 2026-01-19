@@ -2,46 +2,56 @@ import GetProductByBarcode from "../api/fetchProductByBarcode.js";
 
 class ProductModal {
   constructor() {
-    this.modal = document.getElementById("product-modal");
+    this.modal = document.getElementById("productScanner-modal");
     this.currentProduct = null;
 
-    this.image = document.getElementById("modal-product-image");
-    this.name = document.getElementById("modal-product-name");
-    this.brand = document.getElementById("modal-product-brand");
-    this.quantity = document.getElementById("modal-product-quantity");
+    this.image = document.getElementById("productScanner-modal-product-image");
+    this.name = document.getElementById("productScanner-modal-product-name");
+    this.brand = document.getElementById("productScanner-modal-product-brand");
+    this.quantity = document.getElementById(
+      "productScanner-modal-product-quantity"
+    );
 
-    this.nutriScore = document.getElementById("modal-nutriscore");
-    this.novaScore = document.getElementById("modal-nova");
+    this.nutriScore = document.getElementById(
+      "productScanner-modal-nutriscore"
+    );
+    this.novaScore = document.getElementById("productScanner-modal-nova");
 
-    this.calories = document.getElementById("modal-calories");
+    this.calories = document.getElementById("productScanner-modal-calories");
 
-    this.protein = document.getElementById("modal-protein");
-    this.carbs = document.getElementById("modal-carbs");
-    this.fat = document.getElementById("modal-fat");
-    this.sugar = document.getElementById("modal-sugar");
+    this.protein = document.getElementById("productScanner-modal-protein");
+    this.carbs = document.getElementById("productScanner-modal-carbs");
+    this.fat = document.getElementById("productScanner-modal-fat");
+    this.sugar = document.getElementById("productScanner-modal-sugar");
 
-    this.proteinBar = document.getElementById("modal-protein-bar");
-    this.carbsBar = document.getElementById("modal-carbs-bar");
-    this.fatBar = document.getElementById("modal-fat-bar");
-    this.sugarBar = document.getElementById("modal-sugar-bar");
+    this.proteinBar = document.getElementById(
+      "productScanner-modal-protein-bar"
+    );
+    this.carbsBar = document.getElementById("productScanner-modal-carbs-bar");
+    this.fatBar = document.getElementById("productScanner-modal-fat-bar");
+    this.sugarBar = document.getElementById("productScanner-modal-sugar-bar");
 
-    this.saturatedFat = document.getElementById("modal-saturated-fat");
-    this.fiber = document.getElementById("modal-fiber");
-    this.salt = document.getElementById("modal-salt");
+    this.saturatedFat = document.getElementById(
+      "productScanner-modal-saturated-fat"
+    );
+    this.fiber = document.getElementById("productScanner-modal-fiber");
+    this.salt = document.getElementById("productScanner-modal-salt");
 
     this.ingredientsContainer = document.getElementById(
-      "modal-ingredients-container"
+      "productScanner-modal-ingredients-container"
     );
-    this.ingredients = document.getElementById("modal-ingredients");
+    this.ingredients = document.getElementById(
+      "productScanner-modal-ingredients"
+    );
 
     this.allergensContainer = document.getElementById(
-      "modal-allergens-container"
+      "productScanner-modal-allergens-container"
     );
-    this.allergens = document.getElementById("modal-allergens");
+    this.allergens = document.getElementById("productScanner-modal-allergens");
 
     this.closeBtns = [
-      document.getElementById("modal-close-btn"),
-      document.getElementById("modal-close-btn-bottom"),
+      document.getElementById("productScanner-modal-close-btn"),
+      document.getElementById("productScanner-modal-close-btn-bottom"),
     ];
 
     this.closeModalBtn();
