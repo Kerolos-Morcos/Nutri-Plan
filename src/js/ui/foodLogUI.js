@@ -258,6 +258,7 @@ class FoodLogUI {
           localStorage.setItem("nutriplan_daily_log", JSON.stringify(data));
           this.storage = data;
           this.todayNutrition();
+          this.weeklyOverview();
         }
       });
     });
@@ -283,6 +284,7 @@ class FoodLogUI {
         localStorage.setItem("nutriplan_daily_log", JSON.stringify(data));
 
         this.todayNutrition();
+        this.weeklyOverview();
 
         Swal.fire({
           icon: "success",
