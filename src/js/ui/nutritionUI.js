@@ -12,7 +12,6 @@ class NutritionUI {
   async fetchNutrition(meal) {
     if (!this.heroCalories || !this.nutritionContainer) return;
 
-    // Show loading state
     this.heroCalories.innerHTML = `
       <span class="inline-flex items-center gap-2">
         <svg class="animate-spin h-4 w-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -54,7 +53,6 @@ class NutritionUI {
     `;
 
     const nutrition = await FetchNutrition.getNutrition(meal);
-    console.log("Nutrition data received:", nutrition);
 
     if (!nutrition) {
       this.heroCalories.textContent = "N/A";
@@ -93,7 +91,7 @@ class NutritionUI {
     const cholesterol = perServing.cholesterol || 0;
     const sodium = perServing.sodium || 0;
 
-    // Macros limits for progress bars
+    // progress bars
     const maxProtein = 50;
     const maxCarbs = 300;
     const maxFat = 70;
@@ -101,7 +99,7 @@ class NutritionUI {
     const maxSugar = 50;
     const maxSaturatedFat = 20;
 
-    // Calculate percentages for progress bars
+    // Calculate percentages
     const proteinPercent = Math.min((protein / maxProtein) * 100, 100);
     const carbsPercent = Math.min((carbs / maxCarbs) * 100, 100);
     const fatPercent = Math.min((fat / maxFat) * 100, 100);
@@ -112,7 +110,6 @@ class NutritionUI {
       100
     );
 
-    // Hero calories
     this.logMealBtn.classList.add("hover:bg-blue-700", "cursor-pointer");
     this.logMealBtn.classList.remove(
       "bg-gray-300",
@@ -210,8 +207,7 @@ class NutritionUI {
         <div class="w-full bg-gray-100 rounded-full h-2">
           <div class="bg-red-500 h-2 rounded-full" style="width: ${saturatedFatPercent}%"></div>
         </div>
-      </div>
-      
+      </div> 
       <div class="mt-6 pt-6 border-t border-gray-100">
         <h3 class="text-sm font-semibold text-gray-900 mb-3">Other</h3>
         <div class="grid grid-cols-2 gap-3 text-sm">

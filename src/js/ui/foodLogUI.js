@@ -22,21 +22,21 @@ class FoodLogUI {
       this.weeklyOverview();
     });
   }
-  //   Display Current Date
+
   currentDateNow() {
     const date = new Date();
     const options = { weekday: "long", day: "numeric", month: "short" };
     this.currentDate.textContent = date.toLocaleDateString("en-US", options);
   }
 
-  //   Calculate Progress (Progress Bar)
+  // (Progress Bar)
   calculateProgress(current, target) {
     if (!current || !target) return 0;
     const percent = (current / target) * 100;
     return Math.min(percent, 100);
   }
 
-  //   Today's Nutrition Summary - Get From LocalStorage
+  //  Display From LocalStorage
   todayNutrition() {
     this.storage =
       JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
@@ -237,7 +237,7 @@ class FoodLogUI {
     `;
     this.clearAllBtn = document.getElementById("clearAllBtn");
     this.clearAllItems(today);
-    this.attachmentRemoveListener(today);
+    this.deleteItem(today);
   }
 
   clearAllItems(today) {
@@ -264,7 +264,7 @@ class FoodLogUI {
     });
   }
 
-  attachmentRemoveListener(today) {
+  deleteItem(today) {
     const removeButtons = document.querySelectorAll(".remove-foodlog-item");
     removeButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -297,7 +297,7 @@ class FoodLogUI {
     });
   }
 
-  //   Weekly Overview
+  //   Weekly overview SECTION
   weeklyOverview() {
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const today = new Date();

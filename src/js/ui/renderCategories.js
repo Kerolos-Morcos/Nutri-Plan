@@ -98,7 +98,6 @@ class RenderCategories {
       })
       .join("");
 
-    // Active Btns
     ActiveCategoryBtns.activeCategoryBtnsFunction();
   }
 }

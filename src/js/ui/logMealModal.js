@@ -50,7 +50,6 @@ class LogMealModal {
 
     this.inputValue.value = 1;
 
-    // fill data
     this.image.src = meal.thumbnail;
     this.subtitle.textContent = meal.name;
     this.calories.textContent = nutrition.breakdown.perServing.calories ?? 0;
@@ -69,7 +68,7 @@ class LogMealModal {
     this.logBtn.removeEventListener("click", this.logButtonListener);
   }
 
-  //   Increment and Decrement
+  //   Inc & Dec
   increment() {
     this.valueNumber = Math.min(this.valueNumber + 0.5, 10);
     this.inputValue.value = this.valueNumber.toFixed(1);
@@ -80,7 +79,7 @@ class LogMealModal {
     this.inputValue.value = this.valueNumber.toFixed(1);
   }
 
-  // For Manual Input
+  // For Manual Input User
   handleInputChange() {
     let val = parseFloat(this.inputValue.value);
     if (isNaN(val) || val < 0.5) val = 0.5;
@@ -89,9 +88,8 @@ class LogMealModal {
     this.inputValue.value = this.valueNumber.toFixed(1);
   }
 
-  //   Log Meal Button to LocalStorage
+  // Log Meal Button to LocalStorage
   logMeal() {
-    console.log("LOG MEAL CLICK");
     const servings = Number(this.inputValue.value);
     const per = this.nutrition.breakdown.perServing;
     const today = new Date().toISOString().split("T")[0];
@@ -103,7 +101,6 @@ class LogMealModal {
 
     const storage =
       JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
-    console.log("eng. ahmed", today);
 
     if (!storage[today]) {
       storage[today] = {
@@ -148,8 +145,6 @@ class LogMealModal {
     storage[today].totalFat += fat;
 
     localStorage.setItem("nutriplan_daily_log", JSON.stringify(storage));
-
-    console.log("Storage after logging:", storage[today]);
 
     if (window.foodLogUIInstance) {
       window.foodLogUIInstance.todayNutrition();

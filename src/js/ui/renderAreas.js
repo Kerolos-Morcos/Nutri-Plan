@@ -32,8 +32,6 @@ class RenderAreas {
       .join("");
 
     this.container.innerHTML = allMeals;
-
-    // Active Btns
     ActiveAreaBtns.activeBtnsFunction();
   }
 }

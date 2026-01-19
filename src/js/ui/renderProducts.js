@@ -13,12 +13,10 @@ class RenderProducts {
     pagination = null,
     category = null,
   }) {
-    // Render products
     this.container.innerHTML = products
       .map((product) => this.createProductCard(product))
       .join("");
     this.container.style.display = "grid";
-    // Update count
     if (pagination && pagination.total) {
       this.countElement.textContent = `Found ${pagination.total} product in ${category}`;
     } else {

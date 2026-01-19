@@ -4,7 +4,6 @@ class ViewToggle {
     const listBtn = document.getElementById("list-view-btn");
     const grid = document.getElementById("recipes-grid");
 
-    // Grid View
     gridBtn.addEventListener("click", () => {
       grid.className = "grid grid-cols-4 gap-5";
       document.querySelectorAll(".recipe-card").forEach((card) => {
@@ -16,7 +15,6 @@ class ViewToggle {
       listBtn.classList.remove("bg-white", "shadow-sm");
     });
 
-    // List View
     listBtn.addEventListener("click", () => {
       grid.className = "grid grid-cols-2 gap-4";
       document.querySelectorAll(".recipe-card").forEach((card) => {

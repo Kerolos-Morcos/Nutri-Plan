@@ -8,32 +8,27 @@ class FetchMealDetailsUI {
     const search = document.getElementById("search-filters-section");
     const categories = document.getElementById("meal-categories-section");
     const allMeals = document.getElementById("all-recipes-section");
-    // Meal Details
     const mealDetails = document.getElementById("meal-details");
     const backBtn = document.getElementById("back-to-meals-btn");
     const logMealBtn = document.getElementById("log-meal-btn");
 
-    // ================= Header =================
     header.querySelector("h1").textContent = "Meal recipes";
     header.querySelector("p").textContent =
       "View full recipe information and nutrition facts";
-    //   Hide other sections
     search.classList.add("hidden");
     categories.classList.add("hidden");
     allMeals.classList.add("hidden");
     mealDetails.classList.remove("hidden");
 
-    // ================= Hero =================
     document.getElementById("meal-image").src = meal.thumbnail;
     document.getElementById("meal-image").alt = meal.name;
     document.getElementById("meal-title").textContent = meal.name;
 
-    // Hero servings and calories
     const heroServings = document.getElementById("hero-servings");
     if (heroServings) {
       heroServings.textContent = "4 servings";
     }
-    // ================= Badges =================
+
     const badgesContainer = mealDetails.querySelector(
       ".absolute.bottom-0 .flex"
     );
@@ -60,12 +55,10 @@ class FetchMealDetailsUI {
       }
     `;
 
-    // ================= Ingredients =================
     const ingredientsContainer = document.querySelector(
       "#ingredients-container .grid"
     );
 
-    // Update ingredients count
     const ingredientsCount = mealDetails.querySelector(
       "#ingredients-container h2 span"
     );
@@ -90,7 +83,6 @@ class FetchMealDetailsUI {
       `;
     });
 
-    // ================= Instructions =================
     const instructionsContainer = document.querySelector(
       "#instructions-container .space-y-4"
     );
@@ -111,7 +103,6 @@ class FetchMealDetailsUI {
       `;
     });
 
-    // ================= Video =================
     if (meal.youtube) {
       const iframe = document.querySelector("iframe");
       if (!iframe) return;
@@ -119,10 +110,8 @@ class FetchMealDetailsUI {
       iframe.src = meal.youtube.replace("watch?v=", "embed/");
     }
 
-    // ================= Nutrition =================
     const nutritionUI = new NutritionUI();
     const nutrition = await nutritionUI.fetchNutrition(meal);
-    // ================= Modal =================
 
     const logMealModal = new LogMealModal();
 

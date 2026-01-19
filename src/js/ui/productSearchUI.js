@@ -13,14 +13,12 @@ class ProductSearchUI {
     this.renderer = new RenderProducts();
   }
 
-  attachEventListeners() {
-    // Search by name
+  searchInputListener() {
     this.searchBtn.addEventListener("click", () => this.handleSearch());
     this.searchInput.addEventListener("keyup", (e) => {
       if (e.key === "Enter") this.handleSearch();
     });
 
-    // Search by barcode
     this.barcodeBtn.addEventListener("click", () => this.handleBarcodeSearch());
     this.barcodeInput.addEventListener("keyup", (e) => {
       if (e.key === "Enter") this.handleBarcodeSearch();
@@ -31,20 +29,15 @@ class ProductSearchUI {
     const query = this.searchInput.value.trim();
     if (!query) return;
 
-    // Hide products first
     this.renderer.container.style.display = "none";
     this.renderer.emptyContainer.style.display = "none";
 
-    // Show loader
     this.renderer.loader.show();
 
-    // Fetch data
     const products = await SearchProducts.searchProductsByName(query);
 
-    // Hide loader
     this.renderer.loader.hide();
 
-    // Render products
     this.renderer.renderProductsFunction({ products });
   }
 

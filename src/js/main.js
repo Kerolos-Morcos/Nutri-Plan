@@ -39,7 +39,7 @@ class App {
     searchFeature.search();
 
     const productSearch = new ProductSearchUI();
-    productSearch.attachEventListeners();
+    productSearch.searchInputListener();
 
     // Initialize Nutri-Score Filter
     const nutriScoreFilter = new NutriScoreFilter();
