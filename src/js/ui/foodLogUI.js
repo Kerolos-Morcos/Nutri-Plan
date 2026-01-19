@@ -11,13 +11,15 @@ class FoodLogUI {
       fat: 65,
     };
     this.todaySection = document.getElementById("foodlog-today-section");
+    this.weeklySection = document.getElementById("weekly-chart");
     this.todayNutrition();
+    this.weeklyOverview();
 
     window.foodLogUIInstance = this;
 
-    // اسمع على custom event
     window.addEventListener("mealLogged", () => {
       this.todayNutrition();
+      this.weeklyOverview();
     });
   }
   //   Display Current Date
@@ -291,6 +293,39 @@ class FoodLogUI {
         });
       });
     });
+  }
+
+  //   Weekly Overview
+  weeklyOverview() {
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const today = new Date();
+    const weekData = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(today.getDate() - i);
+      const dateKey = date.toISOString().split("T")[0];
+      const data = this.storage[dateKey] || { totalCalories: 0 };
+      weekData.push({
+        day: daysOfWeek[date.getDay()],
+        date: date.getDate(),
+        calories: data.totalCalories ?? 0,
+        isToday: dateKey === today.toISOString().split("T")[0],
+      });
+    }
+    this.weeklySection.innerHTML = weekData
+      .map(
+        (d) => `
+      <div class="text-center ${d.isToday ? "bg-indigo-100 rounded-xl" : ""}">
+        <p class="text-xs text-gray-500 mb-1">${d.day}</p>
+        <p class="text-sm font-medium text-gray-900">${d.date}</p>
+        <div class="mt-2 text-gray-300">
+          <p class="text-lg font-bold">${d.calories}</p>
+          <p class="text-xs">kcal</p>
+        </div>
+      </div>
+    `
+      )
+      .join("");
   }
 }
 
