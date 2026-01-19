@@ -38,6 +38,18 @@ class NavigationUI {
         this.setActiveLink(target);
       });
     });
+
+    // Quick buttons
+    const quickBtns = document.querySelectorAll('[href^="#"]');
+    quickBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = btn.getAttribute("href");
+        window.location.hash = target;
+        this.openSection(target);
+        this.setActiveLink(target);
+      });
+    });
   }
 
   loadFromHash() {
