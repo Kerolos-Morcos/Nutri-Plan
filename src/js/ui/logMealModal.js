@@ -104,7 +104,7 @@ class LogMealModal {
     const storage =
       JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
     console.log("eng. ahmed", today);
-    // ✅ افرغ بيانات اليوم لو موجودة
+
     if (!storage[today]) {
       storage[today] = {
         totalCalories: 0,
@@ -118,8 +118,6 @@ class LogMealModal {
     const meals = storage[today].meals;
 
     const existingMeal = meals.find((m) => m.mealId.includes(this.meal.id));
-    console.log("first", existingMeal);
-    console.log("mealalsdkasld", meals);
     if (existingMeal) {
       existingMeal.servings += servings;
       existingMeal.nutrition.calories += calories;
