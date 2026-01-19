@@ -16,13 +16,11 @@ class LogMealModal {
     this.inputValue = document.getElementById("meal-servings");
     this.valueNumber = Number(this.inputValue.value);
     this.cancelBtn.addEventListener("click", () => this.hide());
-
     this.logBtn = document.getElementById("confirm-log-meal");
-    if (this.logBtn) {
-      this.handleLogMeal = this.logMeal.bind(this);
-      this.logBtn.addEventListener("click", this.handleLogMeal);
-    }
-
+    this.logButtonListener = () => {
+      this.logMeal();
+    };
+    this.logBtn.addEventListener("click", this.logButtonListener);
     this.increase.addEventListener("click", () => this.increment());
     this.decrease.addEventListener("click", () => this.decrement());
     this.inputValue.addEventListener("change", () => this.handleInputChange());
@@ -31,7 +29,7 @@ class LogMealModal {
 
   resetModal() {
     this.inputValue.value = 1;
-    this.valueNumber = 1;
+    this.valueNumber = this.inputValue.value;
 
     this.image.src = "";
     this.title.textContent = "";
@@ -68,6 +66,7 @@ class LogMealModal {
   hide() {
     this.modal.classList.add("hidden");
     this.inputValue.value = 1;
+    this.logBtn.removeEventListener("click", this.logButtonListener);
   }
 
   //   Increment and Decrement
@@ -104,7 +103,7 @@ class LogMealModal {
 
     const storage =
       JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
-
+    console.log("eng. ahmed", today);
     // ✅ افرغ بيانات اليوم لو موجودة
     if (!storage[today]) {
       storage[today] = {
@@ -118,8 +117,9 @@ class LogMealModal {
 
     const meals = storage[today].meals;
 
-    const existingMeal = meals.find((m) => m.mealId === this.meal.id);
-
+    const existingMeal = meals.find((m) => m.mealId.includes(this.meal.id));
+    console.log("first", existingMeal);
+    console.log("mealalsdkasld", meals);
     if (existingMeal) {
       existingMeal.servings += servings;
       existingMeal.nutrition.calories += calories;
