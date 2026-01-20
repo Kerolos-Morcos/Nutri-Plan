@@ -153,14 +153,7 @@ class LogMealModal {
       window.foodLogUIInstance.todayNutrition();
     }
 
-    window.dispatchEvent(
-      new CustomEvent("mealLogged", {
-        detail: {
-          meal: this.meal,
-          date: today,
-        },
-      })
-    );
+    window.dispatchEvent(new CustomEvent("mealLogged"));
 
     Swal.fire({
       icon: "success",
