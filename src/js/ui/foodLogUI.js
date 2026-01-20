@@ -190,26 +190,42 @@ class FoodLogUI {
                           return `
                     <div class="flex items-center justify-between bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-all">
                         <div class="flex items-center gap-4">
-                            <img src=${meal.thumbnail} alt="${meal.name}" class="w-14 h-14 rounded-xl object-cover">
+                            <img src=${meal.thumbnail} alt="${
+                            meal.name
+                          }" class="w-14 h-14 rounded-xl object-cover">
                             <div>
-                                <p class="font-semibold text-gray-900">${meal.name}</p>
+                                <p class="font-semibold text-gray-900">${
+                                  meal.name
+                                }</p>
                                 <p class="text-sm text-gray-500">
                                     ${meal.servings} serving
                                     <span class="mx-1">•</span>
-                                    <span class="text-emerald-600">Recipe</span>
+                                    ${
+                                      meal.source === "recipe"
+                                        ? '<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium"> Recipe</span>'
+                                        : '<span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium"> Scanner</span>'
+                                    }
                                 </p>
                                 <p class="text-xs text-gray-400 mt-1">${time}</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="text-right">
-                                <p class="text-lg font-bold text-emerald-600">${meal.nutrition.calories}</p>
+                                <p class="text-lg font-bold text-emerald-600">${
+                                  meal.nutrition.calories
+                                }</p>
                                 <p class="text-xs text-gray-500">kcal</p>
                             </div>
                             <div class="hidden md:flex gap-2 text-xs text-gray-500">
-                                <span class="px-2 py-1 bg-blue-50 rounded">${meal.nutrition.protein}g P</span>
-                                <span class="px-2 py-1 bg-amber-50 rounded">${meal.nutrition.carbs}g C</span>
-                                <span class="px-2 py-1 bg-purple-50 rounded">${meal.nutrition.fat}g F</span>
+                                <span class="px-2 py-1 bg-blue-50 rounded">${
+                                  meal.nutrition.protein
+                                }g P</span>
+                                <span class="px-2 py-1 bg-amber-50 rounded">${
+                                  meal.nutrition.carbs
+                                }g C</span>
+                                <span class="px-2 py-1 bg-purple-50 rounded">${
+                                  meal.nutrition.fat
+                                }g F</span>
                             </div>
                             <button class="remove-foodlog-item text-gray-400 hover:text-red-500 transition-all p-2" data-index="${index}">
                                 <i class="fa fa-trash-can"></i>

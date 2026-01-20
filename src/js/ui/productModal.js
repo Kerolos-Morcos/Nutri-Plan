@@ -54,6 +54,16 @@ class ProductModal {
       document.getElementById("productScanner-modal-close-btn-bottom"),
     ];
 
+    this.logProductBtn = document.getElementById(
+      "productScanner-modal-add-to-log"
+    );
+    if (this.logProductBtn) {
+      this.logProductBtn.addEventListener("click", () => {
+        this.addProductToLog(1);
+        this.close();
+      });
+    }
+
     this.closeModalBtn();
   }
 
@@ -136,6 +146,84 @@ class ProductModal {
     this.modal.classList.add("hidden");
     document.body.style.overflow = "";
     this.currentProduct = null;
+  }
+
+  //   local
+  async addProductToLog(servings = 1) {
+    if (!this.currentProduct || !this.currentProduct.nutrients) return;
+    const today = new Date().toISOString().split("T")[0];
+    const storage =
+      JSON.parse(localStorage.getItem("nutriplan_daily_log")) || {};
+
+    if (!storage[today]) {
+      storage[today] = {
+        totalCalories: 0,
+        totalProtein: 0,
+        totalCarbs: 0,
+        totalFat: 0,
+        meals: [],
+      };
+    }
+
+    const nutrients = this.currentProduct.nutrients || {};
+    const calories = (nutrients.calories || 0) * servings;
+    const protein = (nutrients.protein || 0) * servings;
+    const carbs = (nutrients.carbs || 0) * servings;
+    const fat = (nutrients.fat || 0) * servings;
+
+    const meals = storage[today].meals;
+    const existingMeal = meals.find((m) => m.mealId === this.currentProduct.id);
+
+    if (existingMeal) {
+      existingMeal.servings += servings;
+      existingMeal.nutrition.calories += calories;
+      existingMeal.nutrition.protein += protein;
+      existingMeal.nutrition.carbs += carbs;
+      existingMeal.nutrition.fat += fat;
+      existingMeal.loggedAt = new Date().toISOString();
+    } else {
+      meals.push({
+        type: "product",
+        mealId: this.currentProduct.id,
+        name: this.currentProduct.name,
+        thumbnail: this.currentProduct.image,
+        servings,
+        nutrition: {
+          calories,
+          protein,
+          carbs,
+          fat,
+        },
+        loggedAt: new Date().toISOString(),
+        source: "scanner",
+      });
+    }
+
+    storage[today].totalCalories += calories;
+    storage[today].totalProtein += protein;
+    storage[today].totalCarbs += carbs;
+    storage[today].totalFat += fat;
+
+    localStorage.setItem("nutriplan_daily_log", JSON.stringify(storage));
+
+    window.dispatchEvent(new CustomEvent("mealLogged"));
+
+    Swal.fire({
+      icon: "success",
+      title: "Product Logged!",
+      html: `
+      <p style="margin-bottom: 8px;">
+        <strong>${this.currentProduct.name}</strong>
+        (${servings} servings)
+        has been added to your daily log
+      </p>
+      <p style="color: #16a34a; font-size: 18px; font-weight: bold;">
+        +${Math.round(calories)} calories
+      </p>
+    `,
+      confirmButtonText: "Ok",
+      confirmButtonColor: "#16a34a",
+    });
   }
 }
 

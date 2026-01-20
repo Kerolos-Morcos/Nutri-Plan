@@ -116,7 +116,7 @@ class LogMealModal {
 
     const meals = storage[today].meals;
 
-    const existingMeal = meals.find((m) => m.mealId.includes(this.meal.id));
+    const existingMeal = meals.find((m) => m.mealId === this.meal.id);
     if (existingMeal) {
       existingMeal.servings += servings;
       existingMeal.nutrition.calories += calories;
@@ -138,6 +138,7 @@ class LogMealModal {
           fat,
         },
         loggedAt: new Date().toISOString(),
+        source: "recipe",
       });
     }
 
