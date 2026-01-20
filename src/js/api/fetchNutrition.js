@@ -20,7 +20,6 @@ class FetchNutrition {
     };
 
     try {
-      console.log("Final Ingredients Array:", ingredients);
       const response = await fetch(
         "https://nutriplan-api.vercel.app/api/nutrition/analyze",
         {
