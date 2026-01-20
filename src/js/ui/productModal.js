@@ -108,10 +108,10 @@ class ProductModal {
     this.fat.textContent = `${fat}g`;
     this.sugar.textContent = `${sugar}g`;
 
-    this.proteinBar.style.width = `${(protein / 50) * 100}%`;
-    this.carbsBar.style.width = `${(carbs / 100) * 100}%`;
-    this.fatBar.style.width = `${(fat / 65) * 100}%`;
-    this.sugarBar.style.width = `${(sugar / 50) * 100}%`;
+    this.proteinBar.style.width = `${Math.min((protein / 50) * 100, 100)}%`;
+    this.carbsBar.style.width = `${Math.min((carbs / 100) * 100, 100)}%`;
+    this.fatBar.style.width = `${Math.min((fat / 65) * 100, 100)}%`;
+    this.sugarBar.style.width = `${Math.min((sugar / 50) * 100, 100)}%`;
 
     this.saturatedFat.textContent = `${nutrients.saturatedFat ?? 0}g`;
     this.fiber.textContent = `${nutrients.fiber ?? 0}g`;
