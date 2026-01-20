@@ -17,10 +17,7 @@ class LogMealModal {
     this.valueNumber = Number(this.inputValue.value);
     this.cancelBtn.addEventListener("click", () => this.hide());
     this.logBtn = document.getElementById("confirm-log-meal");
-    this.logButtonListener = () => {
-      this.logMeal();
-    };
-    this.logBtn.addEventListener("click", this.logButtonListener);
+    this.logBtn.addEventListener("click", () => this.logMeal());
     this.increase.addEventListener("click", () => this.increment());
     this.decrease.addEventListener("click", () => this.decrement());
     this.inputValue.addEventListener("change", () => this.handleInputChange());
@@ -48,7 +45,7 @@ class LogMealModal {
     this.meal = meal;
     this.nutrition = nutrition;
 
-    this.inputValue.value = 1;
+    this.valueNumber = 1;
 
     this.image.src = meal.thumbnail;
     this.subtitle.textContent = meal.name;
@@ -65,7 +62,6 @@ class LogMealModal {
   hide() {
     this.modal.classList.add("hidden");
     this.inputValue.value = 1;
-    this.logBtn.removeEventListener("click", this.logButtonListener);
   }
 
   //   Inc & Dec
@@ -186,5 +182,5 @@ class LogMealModal {
     this.hide();
   }
 }
-
-export default LogMealModal;
+const logMealModal = new LogMealModal();
+export default logMealModal;
