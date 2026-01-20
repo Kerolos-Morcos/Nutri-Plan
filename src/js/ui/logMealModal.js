@@ -70,13 +70,15 @@ class LogMealModal {
 
   //   Inc & Dec
   increment() {
-    this.valueNumber = Math.min(this.valueNumber + 0.5, 10);
-    this.inputValue.value = this.valueNumber.toFixed(1);
+    let incVal = Number(this.inputValue.value) + 0.5;
+    if (incVal > 10) incVal = 10;
+    this.inputValue.value = incVal.toFixed(1);
   }
 
   decrement() {
-    this.valueNumber = Math.max(this.valueNumber - 0.5, 0.5);
-    this.inputValue.value = this.valueNumber.toFixed(1);
+    let decVal = Number(this.inputValue.value) - 0.5;
+    if (decVal < 0.5) decVal = 0.5;
+    this.inputValue.value = decVal.toFixed(1);
   }
 
   // For Manual Input User
