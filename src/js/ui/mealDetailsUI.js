@@ -1,4 +1,3 @@
-import FoodLogUI from "./foodLogUI.js";
 import LogMealModal from "./logMealModal.js";
 import NutritionUI from "./nutritionUI.js";
 
