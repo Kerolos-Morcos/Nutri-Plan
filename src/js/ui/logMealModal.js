@@ -28,8 +28,8 @@ class LogMealModal {
   }
 
   resetModal() {
-    this.inputValue.value = 1;
-    this.valueNumber = this.inputValue.value;
+    this.valueNumber = 1;
+    this.syncInput();
 
     this.image.src = "";
     this.title.textContent = "";
@@ -70,15 +70,19 @@ class LogMealModal {
 
   //   Inc & Dec
   increment() {
-    let incVal = Number(this.inputValue.value) + 0.5;
-    if (incVal > 10) incVal = 10;
-    this.inputValue.value = incVal.toFixed(1);
+    this.valueNumber += 0.5;
+    if (this.valueNumber > 10) this.valueNumber = 10;
+    this.syncInput();
   }
 
   decrement() {
-    let decVal = Number(this.inputValue.value) - 0.5;
-    if (decVal < 0.5) decVal = 0.5;
-    this.inputValue.value = decVal.toFixed(1);
+    this.valueNumber -= 0.5;
+    if (this.valueNumber < 0.5) this.valueNumber = 0.5;
+    this.syncInput();
+  }
+
+  syncInput() {
+    this.inputValue.value = this.valueNumber.toFixed(1);
   }
 
   // For Manual Input User
@@ -87,12 +91,12 @@ class LogMealModal {
     if (isNaN(val) || val < 0.5) val = 0.5;
     if (val > 10) val = 10;
     this.valueNumber = val;
-    this.inputValue.value = this.valueNumber.toFixed(1);
+    this.syncInput();
   }
 
   // Log Meal Button to LocalStorage
   logMeal() {
-    const servings = Number(this.inputValue.value);
+    const servings = this.valueNumber;
     const per = this.nutrition.breakdown.perServing;
     const today = new Date().toISOString().split("T")[0];
 
